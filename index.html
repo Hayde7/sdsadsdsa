@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Nash ❤️</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+background:linear-gradient(135deg,#ffd6eb,#ffc2e2,#ffadd8);
+overflow:hidden;
+}
+
+.screen{
+position:absolute;
+inset:0;
+display:none;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:30px;
+}
+
+.screen.active{display:flex}
+
+.card{
+background:#ffc1dd;
+border:1px solid rgba(255,255,255,0.6);
+padding:40px;
+border-radius:28px;
+box-shadow:
+0 10px 30px rgba(255,20,147,0.15),
+inset 0 1px 0 rgba(255,255,255,0.6);
+max-width:700px;
+width:100%;
+backdrop-filter:blur(6px);
+transition:.3s;
+}
+
+.card:hover{transform:translateY(-3px) scale(1.01);}
+
+img{
+max-width:100%;
+height:auto;
+border-radius:18px;
+margin:15px auto 0 auto;
+box-shadow:0 8px 20px rgba(0,0,0,0.15);
+display:block;
+}
+
+h1,h2{color:#c2187a;margin-bottom:20px;font-weight:600;}
+p{color:#333;font-size:17px;}
+
+button{
+background:linear-gradient(180deg,#ff2da0,#ff1493);
+color:white;
+border:none;
+padding:14px 28px;
+border-radius:30px;
+font-size:16px;
+cursor:pointer;
+transition:.25s;
+margin:20px auto 0 auto;
+display:block;
+box-shadow:0 4px 12px rgba(255,20,147,0.3);
+}
+
+button:hover{transform:scale(1.08);}
+button:active{transform:scale(0.96);}
+
+.gray{
+background:linear-gradient(180deg,#e0e0e0,#cfcfcf);
+color:#555;
+}
+
+.memories{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+margin-top:20px;
+}
+
+.memory{
+width:100%;
+aspect-ratio:1/1;
+border:2px dashed rgba(255,105,180,.6);
+border-radius:20px;
+display:flex;
+justify-content:center;
+align-items:center;
+background:rgba(255,255,255,.4);
+overflow:hidden;
+}
+
+.memory img{
+width:100%;
+height:100%;
+object-fit:cover;
+margin:0;
+}
+
+.heart{
+position:absolute;
+font-size:20px;
+color:rgba(255,0,100,0.35);
+animation:float linear infinite;
+}
+
+@keyframes float{
+from{transform:translateY(100vh);opacity:0}
+20%{opacity:1}
+to{transform:translateY(-10vh);opacity:0}
+}
+
+#final{
+background:radial-gradient(circle at bottom,#050510,#000);
+color:white;
+overflow:hidden;
+flex-direction:column;
+}
+
+.moon{
+position:absolute;
+top:60px;
+right:80px;
+width:140px;
+height:140px;
+border-radius:50%;
+background:radial-gradient(circle at 30% 30%, #fff, #eee 60%, #ccc);
+box-shadow:
+0 0 60px rgba(255,255,255,.8),
+0 0 120px rgba(255,255,255,.25);
+}
+
+.star{
+position:absolute;
+background:white;
+border-radius:50%;
+animation:twinkle 3s infinite ease-in-out;
+}
+
+@keyframes twinkle{
+0%,100%{opacity:.3}
+50%{opacity:1}
+}
+
+#typeText{
+max-width:600px;
+line-height:1.6;
+white-space:pre-wrap;
+font-size:19px;
+color:#ffffff;
+text-shadow:0 0 10px rgba(255,255,255,.4);
+animation:fadeIn 2s ease;
+}
+
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(20px)}
+to{opacity:1;transform:translateY(0)}
+}
+</style>
+</head>
+
+<body>
+
+<!-- pasos anteriores (sin cambios) -->
+<div class="screen active" id="step1">
+<div class="card">
+<h1>¡Feliz San Valentín Nash! ❤️</h1>
+<img src="https://public.youware.com/users-website-assets/prod/dc0b63c4-fad2-4b40-a3f7-ccccc84fa74d/44f8e4f08a2342bea993471a3209bf2b.gif">
+<button onclick="nextStep()">Siguiente</button>
+</div>
+</div>
+
+<div class="screen" id="step2">
+<div class="card">
+<h2>Nuestros Recuerditos 📸</h2>
+<div class="memories">
+<div class="memory"><img src="https://media.discordapp.net/attachments/1391172581402349660/1470906928732438791/image.png"></div>
+<div class="memory"><img src="https://media.discordapp.net/attachments/1391172581402349660/1470907102007398579/image.png"></div>
+<div class="memory"><img src="https://media.discordapp.net/attachments/1391917445035462748/1434435924967686154/sa-mp-070-1.png"></div>
+<div class="memory"><img src="https://via.placeholder.com/400x400.png?text=Foto+4"></div>
+</div>
+<button onclick="nextStep()">Siguiente</button>
+</div>
+</div>
+
+<div class="screen" id="step3">
+<div class="card">
+<h2>Nuestra Canción 🎵</h2>
+<iframe style="margin-top:15px;border-radius:16px" width="100%" height="200"
+src="https://www.youtube.com/embed/wIuBcb2T55Q"></iframe>
+<button onclick="nextStep()">Siguiente</button>
+</div>
+</div>
+
+<div class="screen" id="step4">
+<div class="card">
+<h2>Te escribí una carta... 💌</h2>
+<img src="https://public.youware.com/users-website-assets/prod/dc0b63c4-fad2-4b40-a3f7-ccccc84fa74d/407167ae33bc48c38cfa54a5833a8fa7.gif">
+<button onclick="nextStep()">Siguiente</button>
+</div>
+</div>
+
+<div class="screen" id="step5">
+<div class="card">
+<h2>¿Quieres abrirla? 👀</h2>
+<button onclick="nextStep()">SÍ</button>
+<button class="gray" id="noBtn">NO</button>
+</div>
+</div>
+
+<div class="screen" id="step6">
+<div class="card">
+<h2>Para Nash ❤️</h2>
+<p>Te quiero más de lo que a veces sé decir con palabras ❤️</p>
+<button onclick="nextStep()">Siguiente</button>
+</div>
+</div>
+
+<!-- FINAL -->
+<div class="screen" id="final">
+<div class="moon"></div>
+<div id="typeText"></div>
+
+<audio id="finalAudio" preload="auto" loop>
+<source src="nash.mp3" type="audio/mpeg">
+</audio>
+</div>
+
+<script>
+let current=1;
+function nextStep(){
+document.getElementById("step"+current)?.classList.remove("active");
+current++;
+if(current<=6){
+document.getElementById("step"+current).classList.add("active");
+}else{
+document.getElementById("final").classList.add("active");
+startFinal();
+}}
+
+function startFinal(){
+
+// 🎵 REPRODUCIR AUDIO CON FADE IN
+const audio=document.getElementById("finalAudio");
+audio.volume=0;
+audio.play();
+
+let vol=0;
+const fade=setInterval(()=>{
+if(vol<0.7){
+vol+=0.02;
+audio.volume=vol;
+}else{
+clearInterval(fade);
+}
+},120);
+
+// ✨ estrellas
+for(let i=0;i<80;i++){
+const star=document.createElement("div");
+star.className="star";
+star.style.width=Math.random()*3+1+"px";
+star.style.height=star.style.width;
+star.style.left=Math.random()*100+"vw";
+star.style.top=Math.random()*100+"vh";
+document.getElementById("final").appendChild(star);
+}
+
+// ✍️ texto animado
+const text=`Y si tuviera la posibilidad de volver a enamorarme de ti como aquella primera vez lo haría sin pensarlo dos veces lo haría con la misma cada recuerdo tuyo es como una chispa
+certeza de que tú eras mi destino porque hay cosas en la vida que no se explican solo se sienten
+y lo nuestro fue eso
+un impulso del alma
+una casualidad vestida de eternidad
+que me recuerda quién era antes de perderme`;
+
+let i=0;
+function type(){
+if(i<text.length){
+document.getElementById("typeText").innerHTML+=text.charAt(i);
+i++;
+setTimeout(type,40);
+}}
+setTimeout(type,2000);
+}
+</script>
+
+</body>
+</html>
